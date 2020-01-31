@@ -48,7 +48,7 @@ namespace Assignment1
                 {
                     radius = int.Parse(Console.ReadLine());
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Console.WriteLine("Please enter a number.");
                 }
@@ -100,9 +100,10 @@ namespace Assignment1
                                 Console.WriteLine("Please enter a valid radius");
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             Console.WriteLine("Please enter a number.");
+                            validRadius = false;
                         }
                     } while (!validRadius);
                 }
