@@ -42,9 +42,17 @@ namespace Assignment1
             nextOption = true;
 
             do
-            {
+            { 
                 Console.WriteLine("Please enter the radius for the circle: ");
-                radius = int.Parse(Console.ReadLine());
+                try
+                {
+                    radius = int.Parse(Console.ReadLine());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Please enter a number.");
+                }
+
                 if (radius <= 0)
                 {
                     validNumber = false;
@@ -75,18 +83,26 @@ namespace Assignment1
                     do
                     {
                         Console.WriteLine("Please enter a new radius: ");
-                        radius = int.Parse(Console.ReadLine());
-                        if (radius >= 1)
+                        try
                         {
-                            validRadius = true;
-                            testCircle.SetRadius(radius);
-                            Console.WriteLine("Radius Successfully Changed: " + testCircle.GetRadius());
-                            nextOption = true;
+                            radius = int.Parse(Console.ReadLine());
+
+                            if (radius >= 1)
+                            {
+                                validRadius = true;
+                                testCircle.SetRadius(radius);
+                                Console.WriteLine("Radius Successfully Changed: " + testCircle.GetRadius());
+                                nextOption = true;
+                            }
+                            else
+                            {
+                                validRadius = false;
+                                Console.WriteLine("Please enter a valid radius");
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            validRadius = false;
-                            Console.WriteLine("Please enter a valid radius");
+                            Console.WriteLine("Please enter a number.");
                         }
                     } while (!validRadius);
                 }
